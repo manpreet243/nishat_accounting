@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nishat Beverages - Management Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-blue': '#0D47A1',
+              'brand-lightblue': '#1976D2',
+              'brand-accent': '#29B6F6',
+              'brand-bg': '#F4F7FC',
+              'brand-surface': '#FFFFFF',
+              'brand-text-primary': '#1A202C',
+              'brand-text-secondary': '#4A5568',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.2.0"
+  }
+}
+</script>
+<style>
+  #toast-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .toast {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideIn 0.3s forwards, fadeOut 0.5s 2.5s forwards;
+  }
+
+  .toast.success { background-color: #28a745; }
+  .toast.error { background-color: #dc3545; }
+  .toast.info { background-color: #17a2b8; }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+
+  @media print {
+    body, html {
+      background-color: white; /* Ensure clean background */
+    }
+  
+    /* This rule overrides any Tailwind 'overflow-hidden', 'overflow-y-auto', etc. on ANY element during printing, which prevents content from being clipped. */
+    * {
+      overflow: visible !important;
+    }
+  
+    /* Hide everything on the page by default */
+    body * {
+      visibility: hidden;
+    }
+  
+    /* Then, make the printable area and all its children visible */
+    .printable-area, .printable-area * {
+      visibility: visible;
+    }
+    
+    /* Position the printable area to take up the whole page */
+    .printable-area {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 1cm;
+      box-sizing: border-box;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* Forcefully hide any elements marked as no-print */
+    .no-print, .no-print * {
+       display: none !important;
+    }
+
+    @page {
+      size: A4;
+      margin: 0; /* Remove default browser margins */
+    }
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-brand-bg">
+    <div id="root"></div>
+    <div id="toast-container"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
