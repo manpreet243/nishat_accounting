@@ -12,9 +12,9 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onLogin, showSignup }) => {
   // Only these three users can log in
   const allowedEmails = [
-    'user1@example.com', // replace with real allowed email
-    'user2@example.com',
-    'user3@example.com'
+    'Goswamisham75@gmail.com', // replace with real allowed email
+    'girkishore90@icloud.com'
+    
   ];
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
